@@ -1,10 +1,16 @@
-📌 Project Description
+##📌 Project Description
 
 This is a full-stack Task Management Web Application that allows users to create, view, update, and delete tasks in real time.
 
 The application is built using React for the frontend, Node.js with Express for the backend, and MongoDB for persistent data storage. The frontend communicates with the backend through a RESTful API, ensuring a clear separation of concerns and scalable architecture.
+<img width="892" height="589" alt="image" src="https://github.com/user-attachments/assets/d02c1c15-dd16-489b-923f-f0fd72e425c4" />
 
-Users can:
+<img width="912" height="851" alt="image" src="https://github.com/user-attachments/assets/09ebf52b-7bef-4a7b-b9c7-93ccf9df39a6" />
+
+<img width="902" height="839" alt="image" src="https://github.com/user-attachments/assets/28694810-838b-4004-a849-f2ef6cf88441" />
+
+
+## Users can:
 
 Add new tasks
 
@@ -18,7 +24,7 @@ See task completion visually through UI updates
 
 The project focuses on real-world full-stack fundamentals, including CRUD operations, API integration, database interaction, and clean UI structure. It is designed to demonstrate practical development skills rather than just visual design.
 
-🛠️ Technologies Used
+##🛠️ Technologies Used
 
 React (Frontend)
 
@@ -28,7 +34,7 @@ MongoDB (Database)
 
 Axios (API communication)
 
-🎯 Purpose of the Project
+##🎯 Purpose of the Project
 
 This project was built to practice and demonstrate:
 
