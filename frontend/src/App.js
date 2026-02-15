@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/tasks";
+const API_URL = "https://task-management-web-application-cqg6.onrender.com";
 
 function App() {
   const [tasks, setTasks] = useState([]);
