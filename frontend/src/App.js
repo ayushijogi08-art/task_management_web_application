@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+// Make sure this URL is correct (no trailing slash)
 const API_URL = "https://task-management-web-application-cqg6.onrender.com";
 
 function App() {
@@ -13,21 +14,37 @@ function App() {
   const [editingStatus, setEditingStatus] = useState("pending");
 
   const fetchTasks = async () => {
-    const res = await axios.get(API_URL+ "/api/tasks");
-    setTasks(res.data);
+    try {
+      const res = await axios.get(`${API_URL}/api/tasks`);
+      setTasks(res.data);
+    } catch (error) {
+      console.error("Error fetching tasks:", error);
+    }
   };
 
   const addTask = async () => {
     if (!title.trim()) return;
-    await axios.post(`${API_URL}/api/tasks`, { task: taskInput });
-    setTitle("");
-    setDescription("");
-    fetchTasks();
+    try {
+      // FIX 1: specific structure { title, description }
+      await axios.post(`${API_URL}/api/tasks`, { 
+        title: title, 
+        description: description 
+      });
+      setTitle("");
+      setDescription("");
+      fetchTasks();
+    } catch (error) {
+      console.error("Error adding task:", error);
+    }
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`${API_URL}/api/tasks/${id}`);
-    fetchTasks();
+    try {
+      await axios.delete(`${API_URL}/api/tasks/${id}`);
+      fetchTasks();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   const startEdit = (task) => {
@@ -43,13 +60,19 @@ function App() {
 
   const saveEdit = async () => {
     if (!editingTitle.trim()) return;
-    await axios.put(`${API_URL}/api/tasks/$${id}`, {
-      title: editingTitle,
-      description: editingDescription,
-      status: editingStatus,
-    });
-    setEditingId(null);
-    fetchTasks();
+    try {
+      // FIX 2: Used 'editingId' instead of undefined 'id'
+      // FIX 3: Removed extra '$' sign
+      await axios.put(`${API_URL}/api/tasks/${editingId}`, {
+        title: editingTitle,
+        description: editingDescription,
+        status: editingStatus,
+      });
+      setEditingId(null);
+      fetchTasks();
+    } catch (error) {
+      console.error("Error updating task:", error);
+    }
   };
 
   useEffect(() => {
