@@ -19,14 +19,14 @@ function App() {
 
   const addTask = async () => {
     if (!title.trim()) return;
-    await axios.post(API_URL+ "/api/tasks", { title, description });
+    await axios.post(`${API_URL}/api/tasks`, { task: taskInput });
     setTitle("");
     setDescription("");
     fetchTasks();
   };
 
   const deleteTask = async (id) => {
-    await axios.delete(`${API_URL}/${id}`);
+    await axios.delete(`${API_URL}/api/tasks/${id}`);
     fetchTasks();
   };
 
@@ -43,7 +43,7 @@ function App() {
 
   const saveEdit = async () => {
     if (!editingTitle.trim()) return;
-    await axios.put(`${API_URL}/${editingId}`, {
+    await axios.put(`${API_URL}/api/tasks/$${editingId}`, {
       title: editingTitle,
       description: editingDescription,
       status: editingStatus,
