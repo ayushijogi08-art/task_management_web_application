@@ -43,7 +43,7 @@ function App() {
 
   const saveEdit = async () => {
     if (!editingTitle.trim()) return;
-    await axios.put(`${API_URL}/api/tasks/$${editingId}`, {
+    await axios.put(`${API_URL}/api/tasks/$${id}`, {
       title: editingTitle,
       description: editingDescription,
       status: editingStatus,
