@@ -13,13 +13,13 @@ function App() {
   const [editingStatus, setEditingStatus] = useState("pending");
 
   const fetchTasks = async () => {
-    const res = await axios.get(API_URL);
+    const res = await axios.get(API_URL+ "/api/tasks");
     setTasks(res.data);
   };
 
   const addTask = async () => {
     if (!title.trim()) return;
-    await axios.post(API_URL, { title, description });
+    await axios.post(API_URL+ "/api/tasks", { title, description });
     setTitle("");
     setDescription("");
     fetchTasks();
